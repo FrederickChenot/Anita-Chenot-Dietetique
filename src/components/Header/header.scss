@@ -2,5 +2,28 @@
     display: flex;
     justify-content: space-between;
 
-    &-logo {}
+
+
+    &-logo {
+        text-align: center;
+    }
+
+    &-logo__name {
+        font-weight: bold;
+
+    }
+
+    &-logo__img {
+        margin-top: 1em;
+
+        width: 100px;
+        height: 100px;
+    }
+
+    &-home {
+        margin-left: 1em;
+
+        display: flex;
+        align-items: center;
+    }
 }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import './header.scss';
 import { NavLink } from 'react-router-dom';
-import logoAnita from '../../images/1.png';
+import logoAnita from '../../images/3.png';
 import HomeIcon from '../../utils/HomeIcon';
 
 function Header({ className, ...rest }) {
@@ -23,13 +23,18 @@ function Header({ className, ...rest }) {
       </div>
       <div className="header-logo">
         <img
+          className="header-logo__img"
+          sx={{ fontSize: 40 }}
           src={logoAnita}
           alt="logo societe anita chenot"
         />
-        ANITA DIETETIQUE
+        <div className="header-logo__name">
+          ANITA DIETETIQUE
+
+        </div>
       </div>
       <div className="header-burger" />
-      ANITA DIETETIQUE
+
     </div>
 
   );
