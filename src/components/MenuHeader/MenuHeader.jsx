@@ -1,35 +1,31 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import { useState } from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { Avatar } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { NavLink } from 'react-router-dom';
+import './menuheader.scss';
 
-function MenuHeader({
-  isLogged, onLogoutSubmit, onActiveNav,
-}) {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+function MenuHeader() {
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  console.log({ open });
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+    console.log('event', event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
-    onActiveNav(false);
   };
 
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
-  const handleLogoutSubmit = () => {
-    setAnchorEl(null);
-    onLogoutSubmit();
-  };
 
   return (
-    <div>
+    <div className="header-burger">
       <Button
         id="demo-positioned-button"
         aria-controls={open ? 'demo-positioned-menu' : undefined}
@@ -37,7 +33,7 @@ function MenuHeader({
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        <Avatar sx={{ bgcolor: '#007720' }}>
+        <Avatar sx={{ bgcolor: '#C7DB5D' }}>
           <MenuIcon />
         </Avatar>
       </Button>
@@ -57,9 +53,16 @@ function MenuHeader({
         }}
       >
         <NavLink
-          to="/login"
+          to="/prestations"
+          className="search-bar__is-active"
         >
-          <MenuItem onClick={handleClose}>Connexion</MenuItem>
+          <MenuItem onClick={handleClose}>Prestations</MenuItem>
+        </NavLink>
+        <NavLink
+          to="/rendezvous"
+          className="search-bar__is-active"
+        >
+          <MenuItem onClick={handleClose}>Prise de Rendez-vous</MenuItem>
         </NavLink>
         <NavLink
           to="/contact"
@@ -77,27 +80,18 @@ function MenuHeader({
         >
           <MenuItem onClick={handleClose}>A propos</MenuItem>
         </NavLink>
-        {isLogged
-          ? (
-            <div>
-              <NavLink
-                to="/adminCreate"
-              >
-                <MenuItem sx={{ color: 'red' }} onClick={handleClose}>AdminCreate</MenuItem>
-              </NavLink>
-              <MenuItem onClick={handleLogoutSubmit}>Logout</MenuItem>
-            </div>
-          )
-          : ''}
+        <NavLink
+          to="/avis"
+          className="search-bar__is-active"
+        >
+          <MenuItem onClick={handleClose}>Avis-Témoignages</MenuItem>
+        </NavLink>
       </Menu>
     </div>
   );
 }
 
 MenuHeader.propTypes = {
-  isLogged: PropTypes.bool.isRequired,
-  onLogoutSubmit: PropTypes.func.isRequired,
-  onActiveNav: PropTypes.func.isRequired,
 };
 
 export default React.memo(MenuHeader);

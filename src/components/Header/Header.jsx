@@ -34,7 +34,6 @@ function Header({ className, ...rest }) {
 
         </div>
       </div>
-      <div className="header-burger" />
       <MenuHeader />
     </div>
 
