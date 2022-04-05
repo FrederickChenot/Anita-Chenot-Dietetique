@@ -33,7 +33,7 @@ function MenuHeader() {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        <Avatar sx={{ bgcolor: '#C7DB5D' }}>
+        <Avatar sx={{ bgcolor: '#9C27B0' }}>
           <MenuIcon />
         </Avatar>
       </Button>

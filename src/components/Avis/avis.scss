@@ -1,0 +1,20 @@
+.avis {
+	margin-top: 2em;
+	display: flex;
+	justify-content: center;
+
+	&-title {
+		display: flex;
+		align-items: center;
+	}
+
+
+	&-faceIcon {
+		display: flex;
+		margin-bottom: 0.4em;
+		margin-left: 0.4em;
+	}
+
+
+
+}

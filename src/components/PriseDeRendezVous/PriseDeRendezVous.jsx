@@ -23,7 +23,7 @@ function PriseDeRendezVous({ className, ...rest }) {
       <Card sx={{ maxWidth: 345 }}>
         <CardMedia
           component="img"
-          alt="green iguana"
+          alt="exterior-zen-japanese"
           height="140"
           image={imgGarden}
         />

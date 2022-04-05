@@ -18,7 +18,7 @@ function Header({ className, ...rest }) {
           to="/"
         >
           <HomeIcon
-            sx={{ fontSize: 40, color: '#C7DC59' }}
+            sx={{ fontSize: 40, color: '#9C27B0' }}
           />
         </NavLink>
       </div>
