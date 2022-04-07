@@ -9,5 +9,5 @@ body {
 .App {
   background: url('../images/fond-ecran.jpg'), url('../images/fond-ecran.jpg') no-repeat center/cover;
   background-attachment: fixed;
-  height: auto;
+  min-height: 100vh;
 }
