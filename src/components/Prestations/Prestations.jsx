@@ -35,7 +35,8 @@ function Prestations({ className, ...rest }) {
               {item.Title}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim accusantium, asperiores laboriosam necessitatibus unde molestiae totam corrupti, voluptatum reiciendis quisquam officia impedit vitae repellat possimus reprehenderit. Nihil incidunt optio natus!
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim accusantium, asperiores
+              totam corrupti, voluptatum reiciendis quisquam officia i!
             </Typography>
           </CardContent>
           <CardActions>
