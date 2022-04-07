@@ -9,7 +9,13 @@ import TagFacesIcon from '@mui/icons-material/TagFaces';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import './avis.scss';
-import imgIconeZen from '../../images/icone-zen.jpg';
+
+const img = [
+  {
+    UrlOutdoorZen: `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_SERVER}/image/upload/v1649347678/icone-zen_u12t1p.jpg`,
+    Name: 'exterieur Zen',
+  },
+];
 
 function Avis({ className, ...rest }) {
   const handleClick = () => {
@@ -23,9 +29,9 @@ function Avis({ className, ...rest }) {
       <Card className="avis-card" sx={{ maxWidth: 345 }}>
         <CardMedia
           component="img"
-          alt="exterior-zen-japanese"
+          alt={img[0].Name}
           height="140"
-          image={imgIconeZen}
+          image={img[0].UrlOutdoorZen}
         />
         <CardContent>
           <div className="avis-title">

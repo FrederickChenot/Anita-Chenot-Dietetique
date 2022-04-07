@@ -3,9 +3,15 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import './header.scss';
 import { NavLink } from 'react-router-dom';
-import logoAnita from '../../images/logo-site.png';
 import HomeIcon from '../../utils/HomeIcon';
 import MenuHeader from '../MenuHeader/MenuHeader';
+
+const img = [
+  {
+    UrlLogo: `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_SERVER}/image/upload/v1649347684/logo-site_pjgzcd.png`,
+    Name: 'exterieur Zen',
+  },
+];
 
 function Header({ className, ...rest }) {
   return (
@@ -26,7 +32,7 @@ function Header({ className, ...rest }) {
         <img
           className="header-logo__img"
           sx={{ fontSize: 40 }}
-          src={logoAnita}
+          src={img[0].UrlLogo}
           alt="logo societe anita chenot"
         />
         <div className="header-logo__name">

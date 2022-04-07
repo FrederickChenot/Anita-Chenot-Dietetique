@@ -6,10 +6,16 @@ import Typography from '@mui/material/Typography';
 import { ListItem } from '@mui/material';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import imgBambou from '../../images/bambou.jpg';
 import './legalnotice.scss';
 
+const img = [
+  {
+    UrlFlower: `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_SERVER}/image/upload/v1649348076/flower_kqfaxr.jpg`,
+    Name: 'fleur',
+  },
+];
 function LegalNotice({ className, ...rest }) {
+  console.log(img[0].Name);
   return (
     <div
       className={classnames('legalnotice', className)}
@@ -18,9 +24,10 @@ function LegalNotice({ className, ...rest }) {
       <Card className="legalnotice-card" sx={{ maxWidth: 345 }}>
         <CardMedia
           component="img"
-          alt="exterior-zen-japanese"
+          alt={img[0].Name}
           height="140"
-          image={imgBambou}
+          image={img[0].UrlFlower}
+
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">

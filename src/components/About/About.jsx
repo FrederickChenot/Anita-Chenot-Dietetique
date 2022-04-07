@@ -6,7 +6,13 @@ import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import './about.scss';
-import imgGallet from '../../images/gallet.jpg';
+
+const img = [
+  {
+    UrlGallet: `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_SERVER}/image/upload/v1649347674/gallet_yr8el1.jpg`,
+    Name: 'gallet',
+  },
+];
 
 function About({ className, ...rest }) {
   return (
@@ -17,9 +23,9 @@ function About({ className, ...rest }) {
       <Card className="about-card" sx={{ maxWidth: 345 }}>
         <CardMedia
           component="img"
-          alt="exterior-zen-japanese"
+          alt={img[0].Name}
           height="140"
-          image={imgGallet}
+          image={img[0].UrlGallet}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
