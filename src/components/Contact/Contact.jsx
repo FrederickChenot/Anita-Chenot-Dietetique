@@ -148,6 +148,7 @@ function Contact({ className, ...rest }) {
                       p: 4,
                       pt: 2,
                       pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+                      maxWidth: '345',
                     }}
                   >
                     <a href={image.link} target="_blank" rel="noreferrer">
