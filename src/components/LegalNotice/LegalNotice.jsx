@@ -10,13 +10,12 @@ import imgBambou from '../../images/bambou.jpg';
 import './legalnotice.scss';
 
 function LegalNotice({ className, ...rest }) {
-  console.log('hello');
   return (
     <div
       className={classnames('legalnotice', className)}
       {...rest}
     >
-      <Card sx={{ maxWidth: 345 }}>
+      <Card className="legalnotice-card" sx={{ maxWidth: 345 }}>
         <CardMedia
           component="img"
           alt="exterior-zen-japanese"

@@ -10,3 +10,9 @@
 		justify-content: center;
 	}
 }
+
+@media (min-width: 600px) {
+	.prisederendezvous-card {
+		min-width: 600px;
+	}
+}

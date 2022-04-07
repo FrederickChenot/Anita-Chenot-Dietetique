@@ -11,7 +11,6 @@ import './prisederendezvous.scss';
 import imgGarden from '../../images/exterior-japanese.jpg';
 
 function PriseDeRendezVous({ className, ...rest }) {
-  console.log('hello');
   const handleClick = () => {
     window.open('https://www.clicrdv.com/anita-chenot', '_blank');
   };
@@ -20,7 +19,7 @@ function PriseDeRendezVous({ className, ...rest }) {
       className={classnames('prisederendezvous', className)}
       {...rest}
     >
-      <Card sx={{ maxWidth: 345 }}>
+      <Card className="prisederendezvous-card" sx={{ maxWidth: 345 }}>
         <CardMedia
           component="img"
           alt="exterior-zen-japanese"

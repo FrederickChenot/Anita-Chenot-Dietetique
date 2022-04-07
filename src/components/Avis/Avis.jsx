@@ -20,7 +20,7 @@ function Avis({ className, ...rest }) {
       className={classnames('avis', className)}
       {...rest}
     >
-      <Card sx={{ maxWidth: 345 }}>
+      <Card className="avis-card" sx={{ maxWidth: 345 }}>
         <CardMedia
           component="img"
           alt="exterior-zen-japanese"

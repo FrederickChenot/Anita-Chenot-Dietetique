@@ -11,7 +11,6 @@ import './menuheader.scss';
 function MenuHeader() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  console.log({ open });
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
     console.log('event', event.currentTarget);

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import './header.scss';
 import { NavLink } from 'react-router-dom';
-import logoAnita from '../../images/3.png';
+import logoAnita from '../../images/logo-site.png';
 import HomeIcon from '../../utils/HomeIcon';
 import MenuHeader from '../MenuHeader/MenuHeader';
 

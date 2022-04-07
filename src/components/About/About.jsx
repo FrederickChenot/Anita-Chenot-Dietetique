@@ -9,13 +9,12 @@ import './about.scss';
 import imgGallet from '../../images/gallet.jpg';
 
 function About({ className, ...rest }) {
-  console.log('hello');
   return (
     <div
       className={classnames('about', className)}
       {...rest}
     >
-      <Card sx={{ maxWidth: 345 }}>
+      <Card className="about-card" sx={{ maxWidth: 345 }}>
         <CardMedia
           component="img"
           alt="exterior-zen-japanese"
