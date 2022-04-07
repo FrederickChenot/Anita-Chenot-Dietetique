@@ -1,0 +1,22 @@
+.prestations{
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 3em;
+	justify-content: center;
+	width: 100%;
+
+	&-card{
+		display: flex;
+		flex-wrap: wrap;
+		margin: 1em;
+		justify-content: space-between;
+		
+	}
+	&-link{
+		display: flex;
+		justify-content: center;
+		justify-items: center;
+	}
+}
+
+
