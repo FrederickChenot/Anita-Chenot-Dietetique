@@ -9,7 +9,7 @@ import './about.scss';
 
 const img = [
   {
-    UrlGallet: `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_SERVER}/image/upload/v1649347674/gallet_yr8el1.jpg`,
+    UrlGallet: `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_SERVER}/image/upload/q_51/v1649347674/gallet_yr8el1.jpg`,
     Name: 'gallet',
   },
 ];

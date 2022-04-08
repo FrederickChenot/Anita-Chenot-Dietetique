@@ -4,7 +4,6 @@ import classnames from 'classnames';
 import './utilslinks.scss';
 
 function UtilsLinks({ className, ...rest }) {
-  console.log('hello');
   return (
     <div
       className={classnames('utilslinks', className)}

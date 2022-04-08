@@ -13,7 +13,6 @@ function MenuHeader() {
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
-    console.log('event', event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);

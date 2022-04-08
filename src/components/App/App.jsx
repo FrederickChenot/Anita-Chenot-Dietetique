@@ -8,6 +8,8 @@ import PriseDeRendezVous from '../PriseDeRendezVous/PriseDeRendezVous';
 import LegalNotice from '../LegalNotice/LegalNotice';
 import About from '../About/About';
 import Avis from '../Avis/Avis';
+// import Carousel from '../Carousel/carousel';
+import AnimationRotate from '../AnimationRotate/AnimationRotate';
 
 function App() {
   return (
@@ -15,7 +17,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/error" element={<ErrorPage />} />
-        <Route path="/" />
+        <Route path="/" element={<AnimationRotate />} />
         <Route path="*" element={<ErrorPage />} />
         <Route path="/prestations" element={<Prestations />} />
         <Route path="/rendezvous" element={<PriseDeRendezVous />} />

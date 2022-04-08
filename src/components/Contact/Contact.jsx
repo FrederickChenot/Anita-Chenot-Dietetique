@@ -96,7 +96,6 @@ const ImageMarked = styled('span')(({ theme }) => ({
   transition: theme.transitions.create('opacity'),
 }));
 const handleClick = (img) => {
-  console.log('hello handle', img);
   if (img === 'Téléphone') {
     <a href="http://www.linkedin.com/in/frederick-chenot" target="_blank" rel="noreferrer">ff</a>;
   }

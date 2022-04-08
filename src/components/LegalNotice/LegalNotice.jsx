@@ -15,7 +15,6 @@ const img = [
   },
 ];
 function LegalNotice({ className, ...rest }) {
-  console.log(img[0].Name);
   return (
     <div
       className={classnames('legalnotice', className)}
