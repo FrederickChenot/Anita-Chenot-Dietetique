@@ -114,9 +114,10 @@ function Contact({ className, ...rest }) {
       <Card className="contact-card">
         <CardMedia
           component="img"
-          alt="exterior-zen-japanese"
+          alt="cup of tea"
           height="140"
           image={cupOfTea}
+
         />
         <CardContent>
           <Typography className="contact-title" gutterBottom variant="h5" component="div">
