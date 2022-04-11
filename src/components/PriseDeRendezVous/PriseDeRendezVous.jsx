@@ -8,10 +8,11 @@ import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import './prisederendezvous.scss';
+import japanOutside from '../../images/japanOutside.jpg';
 
 const img = [
   {
-    UrlOutdoorJapanese: `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_SERVER}/image/upload/v1649347690/exterior-japanese_q8o8pp.jpg`,
+    UrlOutdoorJapanese: japanOutside,
     Name: 'outdoor Japanese',
   },
 ];

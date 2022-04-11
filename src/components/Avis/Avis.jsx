@@ -9,10 +9,11 @@ import TagFacesIcon from '@mui/icons-material/TagFaces';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import './avis.scss';
+import tree from '../../images/tree.jpg';
 
 const img = [
   {
-    UrlOutdoorZen: `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_SERVER}/image/upload/v1649347678/icone-zen_u12t1p.jpg`,
+    tree: tree,
     Name: 'exterieur Zen',
   },
 ];
@@ -31,7 +32,7 @@ function Avis({ className, ...rest }) {
           component="img"
           alt={img[0].Name}
           height="140"
-          image={img[0].UrlOutdoorZen}
+          image={img[0].tree}
         />
         <CardContent>
           <div className="avis-title">

@@ -5,11 +5,12 @@ import './header.scss';
 import { NavLink } from 'react-router-dom';
 import HomeIcon from '../../utils/HomeIcon';
 import MenuHeader from '../MenuHeader/MenuHeader';
+import logoSite from '../../images/logoSite.png';
 
 const img = [
   {
-    UrlLogo: `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_SERVER}/image/upload/v1649347684/logo-site_pjgzcd.png`,
-    Name: 'exterieur Zen',
+    UrlLogo: logoSite,
+    Name: 'Zen',
   },
 ];
 
@@ -22,8 +23,10 @@ function Header({ className, ...rest }) {
       <div className="header-home">
         <NavLink
           to="/"
+          alt="Home page"
         >
           <HomeIcon
+            alt="Icon home"
             sx={{ fontSize: 40, color: '#9C27B0' }}
           />
         </NavLink>
@@ -33,7 +36,7 @@ function Header({ className, ...rest }) {
           className="header-logo__img"
           sx={{ fontSize: 40 }}
           src={img[0].UrlLogo}
-          alt="logo societe anita chenot"
+          alt="Icon logo"
         />
         <div className="header-logo__name">
           ANITA DIETETIQUE

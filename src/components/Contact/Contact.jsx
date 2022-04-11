@@ -10,22 +10,26 @@ import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import './contact.scss';
+import daisy from '../../images/daisy.jpg';
+import appleTree from '../../images/appleTree.jpg';
+import appleTree2 from '../../images/appleTree2.jpg';
+import cupOfTea from '../../images/cupOfTea.jpg';
 
 const images = [
   {
-    url: `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_SERVER}/image/upload/v1649320094/fleur_ln0o6g.jpg`,
+    url: daisy,
     title: 'Téléphone',
     width: '33%',
     link: 'tel:0606452788',
   },
   {
-    url: `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_SERVER}/image/upload/v1649320091/fleur-arbre_qbpvqb.jpg`,
+    url: appleTree,
     title: 'Mail',
     width: '33%',
     link: 'mailto:anita.chenot@free.fr',
   },
   {
-    url: `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_SERVER}/image/upload/v1649320088/fleur-arbre2_cwn3dg.jpg`,
+    url: appleTree2,
     title: 'Linkedin',
     width: '33%',
     link: 'http://www.linkedin.com/in/chenot-anita-bb926b115',
@@ -112,7 +116,7 @@ function Contact({ className, ...rest }) {
           component="img"
           alt="exterior-zen-japanese"
           height="140"
-          image={`https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_SERVER}/image/upload/v1649159259/the_irnsng.jpg`}
+          image={cupOfTea}
         />
         <CardContent>
           <Typography className="contact-title" gutterBottom variant="h5" component="div">
@@ -136,6 +140,7 @@ function Contact({ className, ...rest }) {
                   backgroundImage: `url(${image.url}) `,
                 }}
                 />
+
                 <ImageBackdrop className="MuiImageBackdrop-root contact-img" />
                 <Image>
                   <Typography

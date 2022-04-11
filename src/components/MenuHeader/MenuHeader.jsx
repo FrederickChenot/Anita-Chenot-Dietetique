@@ -25,6 +25,7 @@ function MenuHeader() {
   return (
     <div className="header-burger">
       <Button
+        alt="Button List"
         id="demo-positioned-button"
         aria-controls={open ? 'demo-positioned-menu' : undefined}
         aria-haspopup="true"

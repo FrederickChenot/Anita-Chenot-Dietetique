@@ -4,10 +4,11 @@ import CardMedia from '@mui/material/CardMedia';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import './errorpage.scss';
+import error404 from '../../images/error404.jpg';
 
 const img = [
   {
-    Url404: `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_SERVER}/image/upload/q_51/v1649407114/poule_LI_e1rmtf.jpg`,
+    Url404: error404,
     Name: 'erreur 404',
   },
 ];

@@ -45,17 +45,17 @@
     transform-origin: center;
 
 		&:nth-child(1) {
-			background: url('https://res.cloudinary.com/dkrfh1jzy/image/upload/v1649410093/tulipe_dxadil.jpg') center/cover;
+			background: url('https://res.cloudinary.com/dkrfh1jzy/image/upload/v1649410093/tulipe_dxadil.webp') center/cover;
 			transform: rotateY(0) translateZ(35vw);
 		}
 
 		&:nth-child(2) {
-			background: url('https://res.cloudinary.com/dkrfh1jzy/image/upload/v1649410093/abeille_sus17h.jpg') center/cover;
+			background: url('https://res.cloudinary.com/dkrfh1jzy/image/upload/v1649410093/abeille_sus17h.webp') center/cover;
 			transform: rotateY(120deg) translateZ(35vw);
 		}
 
 		&:nth-child(3) {
-			background: url('https://res.cloudinary.com/dkrfh1jzy/image/upload/v1649410093/canope_rphlu1.jpg') center/cover;
+			background: url('https://res.cloudinary.com/dkrfh1jzy/image/upload/v1649410093/canope_rphlu1.webp') center/cover;
 			transform: rotateY(240deg) translateZ(35vw);
 		}
 	}

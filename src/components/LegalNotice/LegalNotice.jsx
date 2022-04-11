@@ -7,10 +7,11 @@ import { ListItem } from '@mui/material';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import './legalnotice.scss';
+import waterLilyFlower from '../../images/waterLilyFlower.jpg';
 
 const img = [
   {
-    UrlFlower: `https://res.cloudinary.com/${process.env.REACT_APP_CLOUDINARY_SERVER}/image/upload/v1649348076/flower_kqfaxr.jpg`,
+    UrlFlower: waterLilyFlower,
     Name: 'fleur',
   },
 ];
