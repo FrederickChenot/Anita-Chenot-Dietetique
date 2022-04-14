@@ -8,6 +8,7 @@ import PriseDeRendezVous from '../PriseDeRendezVous/PriseDeRendezVous';
 import LegalNotice from '../LegalNotice/LegalNotice';
 import About from '../About/About';
 import Avis from '../Avis/Avis';
+import UtilsLinks from '../UtilsLinks/UtilsLinks';
 // import Carousel from '../Carousel/carousel';
 import AnimationRotate from '../AnimationRotate/AnimationRotate';
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/legalnotice" element={<LegalNotice />} />
         <Route path="/about" element={<About />} />
         <Route path="/avis" element={<Avis />} />
+        <Route path="/utilsLinks" element={<UtilsLinks />} />
       </Routes>
     </div>
   );

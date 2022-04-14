@@ -26,6 +26,7 @@ function Header({ className, ...rest }) {
           alt="Home page"
         >
           <HomeIcon
+            className="icon-home"
             alt="Icon home"
             sx={{ fontSize: 40, color: '#9C27B0' }}
           />

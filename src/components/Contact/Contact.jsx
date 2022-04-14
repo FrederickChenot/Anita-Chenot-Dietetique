@@ -26,7 +26,7 @@ const images = [
     url: appleTree,
     title: 'Mail',
     width: '33%',
-    link: 'mailto:anita.chenot@free.fr',
+    link: 'mailto:anitachenot@free.fr',
   },
   {
     url: appleTree2,
@@ -99,11 +99,6 @@ const ImageMarked = styled('span')(({ theme }) => ({
   left: 'calc(50% - 9px)',
   transition: theme.transitions.create('opacity'),
 }));
-const handleClick = (img) => {
-  if (img === 'Téléphone') {
-    <a href="http://www.linkedin.com/in/frederick-chenot" target="_blank" rel="noreferrer">ff</a>;
-  }
-};
 
 function Contact({ className, ...rest }) {
   return (
@@ -158,7 +153,7 @@ function Contact({ className, ...rest }) {
                     <a href={image.link} target="_blank" rel="noreferrer">
                       <Chip
                         label={image.title}
-                        onClick={() => handleClick(image.title)}
+                        clickable
                         sx={{
                           color: 'white',
                           fontSize: '1em',

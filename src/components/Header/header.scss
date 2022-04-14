@@ -1,6 +1,8 @@
 .header {
     display: flex;
+    width: 100%;
     justify-content: space-between;
+    
 
 
 
@@ -27,6 +29,11 @@
         align-items: center;
     }
 
+}
+@media (min-width: 600px) {
+	.icon-home {
+       font-size: 80px;
+       
 
-
+	}
 }

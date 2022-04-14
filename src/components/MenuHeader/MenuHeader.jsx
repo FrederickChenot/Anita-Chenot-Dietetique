@@ -85,6 +85,12 @@ function MenuHeader() {
         >
           <MenuItem onClick={handleClose}>Avis-Témoignages</MenuItem>
         </NavLink>
+        <NavLink
+          to="/utilsLinks"
+          className="search-bar__is-active"
+        >
+          <MenuItem onClick={handleClose}>Liens Utiles</MenuItem>
+        </NavLink>
       </Menu>
     </div>
   );

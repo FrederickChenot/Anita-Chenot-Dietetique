@@ -31,12 +31,14 @@ function Prestations({ className, ...rest }) {
             image={item.UrlImg}
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography className="prestations-card__title" gutterBottom variant="h5" component="div">
               {item.Title}
             </Typography>
+            <div className="prestations-card__price">
+              {item.Price}
+            </div>
             <Typography variant="body2" color="text.secondary">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim accusantium, asperiores
-              totam corrupti, voluptatum reiciendis quisquam officia i!
+              {item.Description}
             </Typography>
           </CardContent>
           <CardActions>
