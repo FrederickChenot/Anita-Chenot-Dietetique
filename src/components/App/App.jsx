@@ -17,16 +17,16 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/error" element={<ErrorPage />} />
+        <Route path="/error/" element={<ErrorPage />} />
         <Route path="/" element={<AnimationRotate />} />
         <Route path="*" element={<ErrorPage />} />
-        <Route path="/prestations" element={<Prestations />} />
-        <Route path="/rendezvous" element={<PriseDeRendezVous />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/legalnotice" element={<LegalNotice />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/avis" element={<Avis />} />
-        <Route path="/utilsLinks" element={<UtilsLinks />} />
+        <Route path="/prestations/" element={<Prestations />} />
+        <Route path="/rendezvous/" element={<PriseDeRendezVous />} />
+        <Route path="/contact/" element={<Contact />} />
+        <Route path="/legalnotice/" element={<LegalNotice />} />
+        <Route path="/about/" element={<About />} />
+        <Route path="/avis/" element={<Avis />} />
+        <Route path="/utilsLinks/" element={<UtilsLinks />} />
       </Routes>
     </div>
   );
