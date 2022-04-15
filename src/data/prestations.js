@@ -5,12 +5,14 @@ import tree from '../images/tree.jpg';
 
 const prestations = [
   {
+    Id: 1,
     Title: 'bilan initial',
     UrlImg: daisy,
     Description: 'Au cours d’un entretien d’1h à 1h15, je réalise avec vous un bilan de vos habitudes et expériences alimentaires et de votre mode de vie, puis nous définissons ensemble vos objectifs réalistes de changements.',
     Price: '50 €',
   },
   {
+    Id: 2,
     Title: 'Consultations de suivi',
     UrlImg: bumblebee,
     Description: `Elles peuvent durer de 45 minutes à 1h selon les besoins définis en amont. Ces entretiens permettent de faire le point sur ce que vous avez mis en place et sur vos difficultés rencontrées.
@@ -19,6 +21,7 @@ const prestations = [
     Price: '30 € pour 45 mibutes - 40 € pour 1h',
   },
   {
+    Id: 3,
     Title: 'Ateliers culinaires',
     UrlImg: tulip,
     Description: `Ce sont des séances animées pour un groupe de 6 à 8 personnes.
@@ -27,6 +30,7 @@ const prestations = [
     Price: '40 € / personne',
   },
   {
+    Id: 4,
     Title: 'Journée à l\'écoute de mes sensations',
     UrlImg: tree,
     Description: `Cette journée animée pour un groupe de 6 à 8 personnes, est un temps que vous prenez pour réfléchir à l’attention que vous portez à vos sensations alimentaires : faim, rassasiement.

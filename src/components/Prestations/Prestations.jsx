@@ -11,8 +11,15 @@ import './prestations.scss';
 import prestations from '../../data/prestations';
 
 function Prestations({ className, ...rest }) {
-  const handleClick = () => {
-    window.open('https://www.clicrdv.com/anita-chenot', '_blank');
+  const handleClick = (item) => {
+    console.log('id:', item.Id);
+    if (item.Id === 3 || item.Id === 4) {
+      console.log('hello');
+      window.location.href = 'tel:0606452788';
+    }
+    else {
+      window.open('https://www.clicrdv.com/anita-chenot', '_blank');
+    }
   };
   return (
     <div
@@ -43,11 +50,14 @@ function Prestations({ className, ...rest }) {
           </CardContent>
           <CardActions>
             <Button
+              key={item.Id}
               size="small"
               className="prestations-link"
               variant="contained"
               color="secondary"
-              onClick={handleClick}
+              onClick={() => {
+                handleClick(item);
+              }}
             >
               Prendre rendez-vous
             </Button>
