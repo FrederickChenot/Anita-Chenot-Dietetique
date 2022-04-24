@@ -1,0 +1,32 @@
+.prestations{
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 2em;
+	justify-content: center;
+	width: 100%;
+
+	&-card{
+		display: flex;
+		flex-wrap: wrap;
+		margin: 1em;
+		justify-content: space-between;
+		margin-block-end: auto;
+		
+	}
+	&-card__title{
+		display: flex;
+		padding-right: 1em;
+	}
+	&-card__price{
+		display: flex;
+		font-size: 1em;
+		margin-bottom: 1em;
+	}
+	&-link{
+		display: flex;
+		justify-content: center;
+		justify-items: center;
+	}
+}
+
+

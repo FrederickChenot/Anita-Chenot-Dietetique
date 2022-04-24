@@ -1,0 +1,39 @@
+.header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    
+
+
+
+    &-logo {
+        text-align: center;
+    }
+
+    &-logo__name {
+        font-weight: bold;
+        margin-top: 0.5em;
+
+    }
+
+    &-logo__img {
+        margin-top: 1em;
+
+        width: 100px;
+        height: 100px;
+    }
+
+    &-home {
+        margin-left: 1em;
+        display: flex;
+        align-items: center;
+    }
+
+}
+@media (min-width: 600px) {
+	.icon-home {
+       font-size: 80px;
+       
+
+	}
+}
