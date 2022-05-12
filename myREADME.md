@@ -50,3 +50,13 @@ Plan organisation ci dessous, voir détails dans le dossier Sprint0.
 
 ### 5-Wireframes
 
+### User-stories
+
+| En tant que  | Je veux | Afin de |
+| - | - | - |
+| Visiteur | Accéder aux prestations | Voir la prestation, son prix, le descriptif avec le temps |
+| Visiteur | Accéder à la prise de rendez-vous | Pouvoir prendre rendez-vous en ligne ou par téléphone |
+| Visiteur | Accéder aux contacts | Avoir tous les moyens de rentrer en relation avec le professionnel |
+| Visiteur | Accéder aux informations du professionnel de santé | Consulter son parcours, ses compétences |
+| Visiteur | Donner mon avis sur la prestation | Donner une note, un avis sur la prestation |
+| Visiteur | Accéder aux liens utiles vers d'autres organismes | Me diriger vers d'autres professionnel de santé si besoin |
