@@ -18,7 +18,7 @@ const prestations = [
     Description: `Elles peuvent durer de 45 minutes à 1h selon les besoins définis en amont. Ces entretiens permettent de faire le point sur ce que vous avez mis en place et sur vos difficultés rencontrées.
     Au cours de ces suivis, je peux vous proposer des exercices réalisés pendant la consultation ou à réaliser entre les consultations afin d’atteindre progressivement vos objectifs définis initialement et de vous motiver à maintenir les changements d’habitudes dans la durée.
     Les consultations de suivi sont généralement espacées de quatre semaines ou plus, c’est vous qui décidez.`,
-    Price: '30 € pour 45 mibutes - 40 € pour 1h',
+    Price: '30 € pour 45 minutes - 40 € pour 1h',
   },
   {
     Id: 3,
