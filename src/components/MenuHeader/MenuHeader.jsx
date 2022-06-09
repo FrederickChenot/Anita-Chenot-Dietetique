@@ -91,6 +91,12 @@ function MenuHeader() {
         >
           <MenuItem onClick={handleClose}>Liens Utiles</MenuItem>
         </NavLink>
+        <NavLink
+          to="/Connexion"
+          className="search-bar__is-active"
+        >
+          <MenuItem onClick={handleClose}>Connexion</MenuItem>
+        </NavLink>
       </Menu>
     </div>
   );

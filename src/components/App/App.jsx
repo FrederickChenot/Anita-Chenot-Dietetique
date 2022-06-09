@@ -9,8 +9,16 @@ import LegalNotice from '../LegalNotice/LegalNotice';
 import About from '../About/About';
 import Avis from '../Avis/Avis';
 import UtilsLinks from '../UtilsLinks/UtilsLinks';
+import Connexion from '../Connexion/Connexion';
 // import Carousel from '../Carousel/carousel';
 import AnimationRotate from '../AnimationRotate/AnimationRotate';
+
+const handleLoginSubmit = () => {
+  console.log('handleloginsubmit');
+};
+const loginErrorMessage = () => {
+  console.log('loginErrorMessage');
+};
 
 function App() {
   return (
@@ -27,6 +35,15 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/avis" element={<Avis />} />
         <Route path="/utilsLinks" element={<UtilsLinks />} />
+        <Route
+          path="/connexion"
+          element={(
+            <Connexion
+              onLoginSubmit={handleLoginSubmit}
+              errorMessage={loginErrorMessage}
+            />
+)}
+        />
       </Routes>
     </div>
   );
