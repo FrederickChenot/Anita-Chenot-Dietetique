@@ -13,18 +13,27 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { styled } from '@mui/material';
+import AlertDialog from '../Alert/alerttest';
 import customTheme from '../../themes/customTheme';
 import wallpaper from '../../images/wallpaper.jpg';
 
-function Connexion({ errorMessage, onLoginSubmit }) {
+function Connexion({ errorMessage, onLoginSubmit, onHandleLoginMistake }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
     onLoginSubmit(email, password);
-    setEmail('');
-    setPassword('');
+  };
+  const handleChoiceSubmit = (response) => {
+    if (response === 'try') {
+      onHandleLoginMistake(response);
+      console.log(response);
+    }
+    if (response === 'forget') {
+      onHandleLoginMistake(response);
+      console.log(response);
+    }
   };
   const StyledBody = styled('div')({
     background: { wallpaper },
@@ -44,80 +53,93 @@ function Connexion({ errorMessage, onLoginSubmit }) {
     <div className="div-login">
       <ThemeProvider theme={customTheme}>
         <StyledBody />
-        <Container component="main" maxWidth="xs">
-          <CssBaseline />
-          <Box
-            sx={{
-              marginTop: 8,
-              padding: 2,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              bgcolor: '#E2D6D7',
-              borderRadius: 2,
+        {!errorMessage
+          ? (
+            <Container component="main" maxWidth="xs">
+              <CssBaseline />
 
-            }}
-          >
-            <Avatar sx={{ m: 1, bgcolor: '#9C27B0' }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5" />
-            <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                autoFocus
-                value={email}
-                onChange={((event) => setEmail(event.target.value))}
-                {...(errorMessage.length > 0 ? {
-                  error: true,
-                  helperText: errorMessage,
-                } : {})}
-              />
-              <TextField
-                color="primary"
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                value={password}
-                onChange={((event) => setPassword(event.target.value))}
-                {...(errorMessage.length > 0 ? {
-                  error: true,
-                  helperText: errorMessage,
-                } : {})}
-              />
+              <Box
+                sx={{
+                  marginTop: 8,
+                  padding: 2,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  bgcolor: '#E2D6D7',
+                  borderRadius: 2,
 
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                }}
               >
-                Connecter
-              </Button>
+                <Avatar sx={{ m: 1, bgcolor: '#9C27B0' }}>
+                  <LockOutlinedIcon />
+                </Avatar>
+                <Typography component="h1" variant="h5" />
+                <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                  <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                    autoComplete="email"
+                    autoFocus
+                    value={email}
+                    onChange={((event) => setEmail(event.target.value))}
+                    {...(errorMessage.length > 0 ? {
+                      error: true,
+                      helperText: errorMessage,
+                    } : {})}
+                  />
+                  <TextField
+                    color="primary"
+                    margin="normal"
+                    required
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type="password"
+                    id="password"
+                    autoComplete="current-password"
+                    value={password}
+                    onChange={((event) => setPassword(event.target.value))}
+                    {...(errorMessage.length > 0 ? {
+                      error: true,
+                      helperText: errorMessage,
+                    } : {})}
+                  />
 
-            </Box>
-          </Box>
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2 }}
+                  >
+                    Connecter
+                  </Button>
 
-        </Container>
+                </Box>
+              </Box>
+
+            </Container>
+          ) : (
+            <AlertDialog
+              onHandleChoice={handleChoiceSubmit}
+            />
+          )}
+
       </ThemeProvider>
     </div>
   );
 }
 
 Connexion.propTypes = {
-  errorMessage: PropTypes.string.isRequired,
+  errorMessage: PropTypes.string,
   onLoginSubmit: PropTypes.func.isRequired,
+  onHandleLoginMistake: PropTypes.func.isRequired,
+};
+Connexion.defaultProps = {
+  errorMessage: '',
 };
 
 export default React.memo(Connexion);
