@@ -8,6 +8,9 @@ const customTheme = createTheme({
     secondary: {
       main: '#ffa500',
     },
+    alert: {
+      main: '#F4511E',
+    },
   },
 });
 export default (customTheme);

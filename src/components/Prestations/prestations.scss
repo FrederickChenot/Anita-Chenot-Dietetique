@@ -28,5 +28,25 @@
 		justify-items: center;
 	}
 }
+.modalModify{
+	position: absolute;
+	animation-duration: 0.25s;
+	animation-name: growBox;
+	width: 800px;
+	height: 500px;
+	background-color: white;
+	border-radius: solid 10px black;
+}
+
+@keyframes growBox{
+	from {
+		width: 300px;
+		height: 200px;
+	} 
+	to{
+		width: 800px;
+		height: 500px;
+	}
+}
 
 
