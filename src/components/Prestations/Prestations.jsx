@@ -15,7 +15,8 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 import { NavLink, useNavigate } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { requestPrestations, requestPrestationsDelete } from '../../requests/prestations';
+import { TextField } from '@mui/material';
+import { requestPrestations, requestPrestationsDelete, requestPrestationsModify } from '../../requests/prestations';
 import customTheme from '../../themes/customTheme';
 import PrestationCreate from '../PrestationCreate/PrestationCreate';
 
@@ -28,12 +29,14 @@ function Prestations({
   const [modalModify, setModalModify] = useState(false);
   const [loader, setLoader] = useState(false);
   const [selectedId, setSelectedId] = useState();
+  const [titlePrestation, setTitlePrestation] = useState();
+  const [idPrestation, setIdPrestation] = useState();
   const navigate = useNavigate;
   useEffect(async () => {
     const response = await requestPrestations();
     if (response.status === 200) {
       setPrestation(response.data);
-      console.log('reponse.data dans prestation jsx', response.data);
+      // console.log('reponse.data dans prestation jsx', response.data);
     }
     else {
       console.log('response front', response);
@@ -78,6 +81,38 @@ function Prestations({
 
   const handleClickAbord = () => {
     setModalModify(false);
+  };
+  const handleSubmitPrestation = async () => {
+    // event.preventDefault();
+    console.log(idPrestation);
+    console.log(titlePrestation);
+    // setTitlePestation(value);
+    const response = await requestPrestationsModify(idPrestation, titlePrestation);
+    if (response.status === 200) {
+      console.log('reponse.data dans submit:', response.data);
+      const response2 = await requestPrestations();
+      if (response2.status === 200) {
+        setPrestation(response2.data);
+      // console.log('reponse.data dans prestation jsx', response.data);
+      }
+    }
+    else {
+      navigate('/error');
+    }
+  };
+
+  const handleChangeTitle = (id, value) => {
+    console.log(id, value);
+    setTitlePrestation(value);
+    setIdPrestation(id);
+  };
+
+  const handleChangePrice = (item) => {
+    console.log('hello dans change price', item);
+  };
+
+  const handleChangeDescription = (item) => {
+    console.log('hello dans change description', item);
   };
 
   return (
@@ -186,52 +221,71 @@ function Prestations({
       {
                         modalModify && (
                         <div className="modalModify">
-                          <CardMedia
-                            key={prestation[selectedId].title}
-                            component="img"
-                            alt={prestation[selectedId].img}
-                            height="140"
-                            image={prestation[selectedId].img}
-                          />
-                          <CardContent>
-                            <Typography className="prestations-card__title" gutterBottom variant="h5" component="div">
-                              {prestation[selectedId].title}
-                            </Typography>
-                            <div className="prestations-card__price">
-                              {prestation[selectedId].prix}
-                            </div>
-                            <Typography variant="body2" color="text.secondary">
-                              {prestation[selectedId].description}
-                            </Typography>
-                          </CardContent>
-                          <CardActions>
-                            <Button
-                              key={prestation[selectedId].id}
-                              size="small"
-                              className="prestations-link"
-                              variant="contained"
-                              color="warning"
-                              // onClick={() => {
-                              //   handleClick(item);
-                              // }}
+                          <form action="" className="form-data__inputPrestation" onSubmit={handleSubmitPrestation}>
+                            <CardMedia
+                              key={prestation[selectedId].title}
+                              component="img"
+                              alt={prestation[selectedId].img}
+                              height="140"
+                              image={prestation[selectedId].img}
+                            />
+                            <CardContent
+                              className="form-data__inputTextfield"
                             >
-                              VALIDER LES MODIFICATIONS
-                            </Button>
-                          </CardActions>
-                          <CardActions>
-                            <Button
-                              key={prestation[selectedId].id}
-                              size="small"
-                              className="prestations-link"
-                              variant="contained"
-                              color="secondary"
-                              onClick={() => {
-                                handleClickAbord();
-                              }}
-                            >
-                              ANNULER
-                            </Button>
-                          </CardActions>
+                              <TextField
+                                key={prestation[selectedId].title}
+                                id="outlined-disabled"
+                                required
+                                label="Titre prestation"
+                                defaultValue={prestation[selectedId].title}
+                                onChange={(event) => handleChangeTitle(prestation[selectedId].id, event.target.value)}
+                              />
+                              <TextField
+                                key={prestation[selectedId].prix}
+                                id="outlined-disabled"
+                                required
+                                label="Prix en euros / personne"
+                                defaultValue={prestation[selectedId].prix}
+                                onChange={(event) => handleChangePrice(prestation[selectedId].id, event.target.value)}
+                              />
+                              <TextField
+                                key={prestation[selectedId].description}
+                                id="outlined-disabled"
+                                required
+                                multiline
+                                maxRows={3}
+                                label="Description"
+                                defaultValue={prestation[selectedId].description}
+                                onChange={(event) => handleChangeDescription(prestation[selectedId].id, event.target.value)}
+                              />
+                            </CardContent>
+                            <CardActions>
+                              <Button
+                                key={prestation[selectedId].id}
+                                size="small"
+                                className="prestations-link"
+                                variant="contained"
+                                color="warning"
+                                type="submit"
+                              >
+                                VALIDER LES MODIFICATIONS
+                              </Button>
+                            </CardActions>
+                            <CardActions>
+                              <Button
+                                key={prestation[selectedId].id}
+                                size="small"
+                                className="prestations-link"
+                                variant="contained"
+                                color="secondary"
+                                onClick={() => {
+                                  handleClickAbord();
+                                }}
+                              >
+                                ANNULER
+                              </Button>
+                            </CardActions>
+                          </form>
                         </div>
                         )
                       }

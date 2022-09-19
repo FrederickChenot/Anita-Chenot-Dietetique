@@ -25,7 +25,7 @@ function App() {
   const [loginErrorMessage, setLoginErrorMessage] = useState('');
   const navigate = useNavigate();
 
-  console.log(userId);
+  // console.log(userId);
 
   const handleLoginSubmit = async (email, password) => {
     setLoginErrorMessage('');
@@ -39,7 +39,7 @@ function App() {
     }
     else {
       setLoginErrorMessage(response.data);
-      console.log(response.data.message);
+      // console.log(response.data.message);
     }
   };
 
@@ -66,7 +66,7 @@ function App() {
       if (response.status === 200) {
         setUserId(response.data.userId);
         setUserName(response.data.userName);
-        console.log('response', response.data);
+        // console.log('response', response.data);
         setIsLogged(true);
         setBearerToken(response.data.accessToken);
       }

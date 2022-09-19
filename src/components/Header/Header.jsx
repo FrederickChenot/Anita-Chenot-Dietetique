@@ -65,7 +65,7 @@ Header.propTypes = {
   className: PropTypes.string,
   isLogged: PropTypes.bool.isRequired,
   onLogoutSubmit: PropTypes.func.isRequired,
-  isUserId: PropTypes.number.isRequired,
+  isUserId: PropTypes.string.isRequired,
   userName: PropTypes.string.isRequired,
 };
 Header.defaultProps = {

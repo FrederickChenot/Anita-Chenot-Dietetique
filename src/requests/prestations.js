@@ -20,3 +20,20 @@ export async function requestPrestationsDelete(id) {
     return err.response;
   }
 }
+
+export async function requestPrestationsModify(id, title) {
+  try {
+    const response = await apiAxios.patch(
+      `/prestations/${id}`,
+      {
+        id,
+        title,
+        // description,
+      },
+    );
+    return response;
+  }
+  catch (err) {
+    return err.response;
+  }
+}
