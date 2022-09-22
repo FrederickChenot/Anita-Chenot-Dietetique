@@ -13,12 +13,13 @@ import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { TextField } from '@mui/material';
-import { requestPrestations, requestPrestationsDelete, requestPrestationsModify } from '../../requests/prestations';
+import {
+  requestPrestations, requestPrestationsDelete, requestPrestationsModify, requestPrestationsCreate,
+} from '../../requests/prestations';
 import customTheme from '../../themes/customTheme';
-import PrestationCreate from '../PrestationCreate/PrestationCreate';
 
 function Prestations({
   className,
@@ -27,10 +28,15 @@ function Prestations({
 }) {
   const [prestation, setPrestation] = useState([]);
   const [modalModify, setModalModify] = useState(false);
-  const [loader, setLoader] = useState(false);
+  const [modalCreate, setModalCreate] = useState(false);
+  // const [loader, setLoader] = useState(false);
   const [selectedId, setSelectedId] = useState();
   const [titlePrestation, setTitlePrestation] = useState();
   const [idPrestation, setIdPrestation] = useState();
+  const [descriptionPrestation, setDescriptionPrestation] = useState();
+  const [prixPrestation, setPrixPrestation] = useState();
+  const [imgPrestation, setImgPrestation] = useState('https://res.cloudinary.com/dkrfh1jzy/image/upload/v1649410092/arbre_seocli.jpg');
+  const [position, setPosition] = useState('');
   const navigate = useNavigate;
   useEffect(async () => {
     const response = await requestPrestations();
@@ -68,32 +74,51 @@ function Prestations({
     }
   };
 
-  const handleClickModify = (id, img, title, description, prix, index) => {
-    console.log(id, img, title, description, prix, index);
+  const handleClickModify = (id, img, title, description, prix, index, position) => {
+    console.log(id, img, title, description, prix, index, position);
     setSelectedId(index);
     setModalModify(true);
+    setModalCreate(false);
   };
 
-  const handleClickCreate = (id, img, title, description, prix) => {
-    console.log(id, img, title, description, prix);
-    setLoader(true);
+  const handleClickCreate = (id, img, title, description, prix, index, position) => {
+    console.log(id, img, title, description, prix, index, position);
+    setSelectedId(index);
+    setModalModify(true);
+    setModalCreate(true);
+    // setLoader(true);
   };
 
   const handleClickAbord = () => {
     setModalModify(false);
   };
-  const handleSubmitPrestation = async () => {
-    // event.preventDefault();
-    console.log(idPrestation);
-    console.log(titlePrestation);
-    // setTitlePestation(value);
-    const response = await requestPrestationsModify(idPrestation, titlePrestation);
+  const handleSubmitPrestation = async (event) => {
+    event.preventDefault();
+    const response = await requestPrestationsModify(idPrestation, imgPrestation, titlePrestation, descriptionPrestation, prixPrestation, position);
     if (response.status === 200) {
       console.log('reponse.data dans submit:', response.data);
       const response2 = await requestPrestations();
       if (response2.status === 200) {
         setPrestation(response2.data);
-      // console.log('reponse.data dans prestation jsx', response.data);
+        setPosition(position);
+        setModalModify(false);
+      }
+    }
+    else {
+      navigate('/error');
+    }
+  };
+  const handleSubmitPrestationCreate = async (event) => {
+    console.log('submit create');
+    event.preventDefault();
+    const response = await requestPrestationsCreate(idPrestation, imgPrestation, titlePrestation, descriptionPrestation, prixPrestation, position);
+    if (response.status === 200) {
+      console.log('reponse.data dans submit:', response.data);
+      const response2 = await requestPrestations();
+      if (response2.status === 200) {
+        setPrestation(response2.data);
+        setPosition(position);
+        setModalModify(false);
       }
     }
     else {
@@ -107,12 +132,22 @@ function Prestations({
     setIdPrestation(id);
   };
 
-  const handleChangePrice = (item) => {
-    console.log('hello dans change price', item);
+  const handleChangePrice = (id, value) => {
+    console.log('hello dans change price', value);
+    setPrixPrestation(value);
+    setIdPrestation(id);
   };
 
-  const handleChangeDescription = (item) => {
-    console.log('hello dans change description', item);
+  const handleChangeDescription = (id, value) => {
+    console.log('hello dans change description', value);
+    setDescriptionPrestation(value);
+    setIdPrestation(id);
+  };
+
+  const handleChangeImg = (id, value) => {
+    console.log('hello dans change img', value);
+    setImgPrestation(value);
+    setIdPrestation(id);
   };
 
   return (
@@ -168,6 +203,7 @@ function Prestations({
                     className="prestations-link"
                     variant="contained"
                     color="warning"
+                    position={item.position}
                     onClick={() => {
                       handleClickDelete(item.id, item.title);
                     }}
@@ -180,36 +216,28 @@ function Prestations({
                     className="prestations-link"
                     variant="contained"
                     color="primary"
+                    position={item.position}
                     onClick={() => {
-                      handleClickModify(item.id, item.img, item.title, item.description, item.prix, prestation.indexOf(item));
+                      handleClickModify(item.id, item.img, item.title, item.description, item.prix, prestation.indexOf(item), item.position);
                     }}
                   >
 
                     <AutoFixHighIcon />
                   </Button>
 
-                  <NavLink
-                    to="/create"
+                  <Button
+                    key="createButton"
+                    size="small"
+                    className="prestations-link"
+                    variant="contained"
+                    color="secondary"
+                    position={item.position}
+                    onClick={() => {
+                      handleClickCreate(item.id, item.img, item.title, item.description, item.prix, prestation.indexOf(item), item.position);
+                    }}
                   >
-                    <Button
-                      key={item.Id}
-                      size="small"
-                      className="prestations-link"
-                      variant="contained"
-                      color="secondary"
-                      onClick={() => {
-                        handleClickCreate(item.id, item.img, item.title, item.description, item.prix);
-                      }}
-
-                    >
-                      {
-                          loader ? (
-                            <PrestationCreate />
-                          ) : ''
-                        }
-                      <AddBoxIcon />
-                    </Button>
-                  </NavLink>
+                    <AddBoxIcon />
+                  </Button>
                 </ThemeProvider>
               )
               : '' }
@@ -221,7 +249,7 @@ function Prestations({
       {
                         modalModify && (
                         <div className="modalModify">
-                          <form action="" className="form-data__inputPrestation" onSubmit={handleSubmitPrestation}>
+                          <form action="" className="form-data__inputPrestation" onSubmit={!modalCreate ? (handleSubmitPrestation) : (handleSubmitPrestationCreate)}>
                             <CardMedia
                               key={prestation[selectedId].title}
                               component="img"
@@ -232,6 +260,14 @@ function Prestations({
                             <CardContent
                               className="form-data__inputTextfield"
                             >
+                              <TextField
+                                key={prestation[selectedId].img}
+                                id="outlined-disabled"
+                                required
+                                label="Image prestation"
+                                defaultValue={prestation[selectedId].img}
+                                onChange={(event) => handleChangeImg(prestation[selectedId].id, event.target.value)}
+                              />
                               <TextField
                                 key={prestation[selectedId].title}
                                 id="outlined-disabled"
@@ -268,7 +304,8 @@ function Prestations({
                                 color="warning"
                                 type="submit"
                               >
-                                VALIDER LES MODIFICATIONS
+                                {modalCreate ? 'MODE CREATION !!! VALIDER LA CREATION' : 'MODE MODIFICATION !!! VALIDER LES MODIFICATIONS'}
+
                               </Button>
                             </CardActions>
                             <CardActions>

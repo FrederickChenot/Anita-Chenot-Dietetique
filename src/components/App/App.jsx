@@ -15,8 +15,6 @@ import Connexion from '../Connexion/Connexion';
 import AnimationRotate from '../AnimationRotate/AnimationRotate';
 import { requestCheck, requestLogin } from '../../requests/login';
 import { getLocalBearerToken, removeBearerToken, setBearerToken } from '../../requests';
-import PrestationModify from '../PrestationModify/PrestationModify';
-import PrestationCreate from '../PrestationCreate/PrestationCreate';
 
 function App() {
   const [userId, setUserId] = useState('');
@@ -85,8 +83,6 @@ function App() {
       />
       <Routes>
         <Route path="/error" element={<ErrorPage />} />
-        <Route path="/modify" element={<PrestationModify />} />
-        <Route path="/create" element={<PrestationCreate isLogged={isLogged} />} />
         <Route path="/" element={<AnimationRotate />} />
         <Route path="*" element={<ErrorPage />} />
         <Route

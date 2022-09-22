@@ -21,14 +21,37 @@ export async function requestPrestationsDelete(id) {
   }
 }
 
-export async function requestPrestationsModify(id, title) {
+export async function requestPrestationsModify(id, img, title, description, prix, position) {
   try {
     const response = await apiAxios.patch(
       `/prestations/${id}`,
       {
         id,
+        img,
         title,
-        // description,
+        description,
+        prix,
+        position,
+      },
+    );
+    return response;
+  }
+  catch (err) {
+    return err.response;
+  }
+}
+
+export async function requestPrestationsCreate(id, img, title, description, prix, position) {
+  try {
+    const response = await apiAxios.post(
+      `/prestations/${id}`,
+      {
+        id,
+        img,
+        title,
+        description,
+        prix,
+        position,
       },
     );
     return response;
