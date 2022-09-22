@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const apiAxios = axios.create({
-  baseURL: ' http://localhost:3000/',
+  baseURL: 'https://equilibre-alimentaire.herokuapp.com/',
+  // baseURL: ' http://localhost:3000/',
 
 });
 
