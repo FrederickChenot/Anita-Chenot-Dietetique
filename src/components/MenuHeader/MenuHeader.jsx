@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
@@ -8,7 +9,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { NavLink } from 'react-router-dom';
 import './menuheader.scss';
 
-function MenuHeader() {
+function MenuHeader({
+  isLogged,
+  onLogoutSubmit,
+}) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -20,6 +24,10 @@ function MenuHeader() {
 
   const handleMenuClose = () => {
     setAnchorEl(null);
+  };
+  const handleLogoutSubmit = () => {
+    setAnchorEl(null);
+    onLogoutSubmit();
   };
 
   return (
@@ -91,12 +99,32 @@ function MenuHeader() {
         >
           <MenuItem onClick={handleClose}>Liens Utiles</MenuItem>
         </NavLink>
+
+        {isLogged
+          ? (
+            <NavLink
+              to="/"
+              className="search-bar__is-active"
+            >
+              <MenuItem onClick={handleLogoutSubmit}>Déconnexion</MenuItem>
+            </NavLink>
+          )
+          : (
+            <NavLink
+              to="/Connexion"
+              className="search-bar__is-active"
+            >
+              <MenuItem onClick={handleClose}>Connexion</MenuItem>
+            </NavLink>
+          )}
       </Menu>
     </div>
   );
 }
 
 MenuHeader.propTypes = {
+  isLogged: PropTypes.bool.isRequired,
+  onLogoutSubmit: PropTypes.func.isRequired,
 };
 
 export default React.memo(MenuHeader);

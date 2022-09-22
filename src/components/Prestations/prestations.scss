@@ -28,5 +28,40 @@
 		justify-items: center;
 	}
 }
+.modalModify{
+	position: fixed;
+	animation-duration: 0.25s;
+	animation-name: growBox;
+	width: 800px;
+	height: max-content;
+	background-color: white;
+	border: 1rem solid #9C27B0;
+}
+
+@keyframes growBox{
+	from {
+		width: 300px;
+		height: 200px;
+	} 
+	to{
+		border: 1rem solid #9C27B0;
+		width: 800px;
+		height: max-content;
+	}
+}
+.form-data{
+	&__inputPrestation{
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+	
+	&__inputTextfield{
+		margin: 0.5em;
+		gap: 1em;
+		display: flex;
+		flex-direction: column;
+	}
+}
 
 

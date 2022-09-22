@@ -30,6 +30,12 @@
     }
 
 }
+.header-top__message{
+    text-transform: uppercase;
+    color: green;
+    margin-top: 0.5em;
+}
+
 @media (min-width: 600px) {
 	.icon-home {
        font-size: 80px;

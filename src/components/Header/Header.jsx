@@ -14,7 +14,14 @@ const img = [
   },
 ];
 
-function Header({ className, ...rest }) {
+function Header({
+  className,
+  isLogged,
+  onLogoutSubmit,
+  isUserId,
+  userName,
+  ...rest
+}) {
   return (
     <div
       className={classnames('header', className)}
@@ -41,10 +48,14 @@ function Header({ className, ...rest }) {
         />
         <div className="header-logo__name">
           ANITA DIETETIQUE
+          {isLogged && (<p className="header-top__message">BIENVENUE, { userName } !</p>)}
 
         </div>
       </div>
-      <MenuHeader />
+      <MenuHeader
+        isLogged={isLogged}
+        onLogoutSubmit={onLogoutSubmit}
+      />
     </div>
 
   );
@@ -52,6 +63,10 @@ function Header({ className, ...rest }) {
 
 Header.propTypes = {
   className: PropTypes.string,
+  isLogged: PropTypes.bool.isRequired,
+  onLogoutSubmit: PropTypes.func.isRequired,
+  isUserId: PropTypes.string.isRequired,
+  userName: PropTypes.string.isRequired,
 };
 Header.defaultProps = {
   className: '',
