@@ -29,13 +29,14 @@ function Prestations({
   const [prestation, setPrestation] = useState([]);
   const [modalModify, setModalModify] = useState(false);
   const [modalCreate, setModalCreate] = useState(false);
+  const [modalDelete, setModalDelete] = useState(false);
   // const [loader, setLoader] = useState(false);
   const [selectedId, setSelectedId] = useState();
   const [titlePrestation, setTitlePrestation] = useState();
   const [idPrestation, setIdPrestation] = useState();
   const [descriptionPrestation, setDescriptionPrestation] = useState();
   const [prixPrestation, setPrixPrestation] = useState();
-  const [imgPrestation, setImgPrestation] = useState('https://res.cloudinary.com/dkrfh1jzy/image/upload/v1649410092/arbre_seocli.jpg');
+  const [imgPrestation, setImgPrestation] = useState('https://res.cloudinary.com/dkrfh1jzy/image/upload/v1653239917/vpinxys8wuhziswnexdf.jpg');
   const [position, setPosition] = useState('');
   const navigate = useNavigate;
   useEffect(async () => {
@@ -58,20 +59,26 @@ function Prestations({
       window.open('https://www.clicrdv.com/anita-chenot', '_blank');
     }
   };
-  const handleClickDelete = async (id, title) => {
-    console.log('id de presta', id);
-    console.log('title de presta', title);
-    const resultat = window.confirm(`CONFIRMER LA SUPRESSION DE : **${title}**`);
-    if (resultat) {
-      await requestPrestationsDelete(id);
-      const response = await requestPrestations();
-      if (response.status === 200) {
-        setPrestation(response.data);
-      }
-    }
-    else {
-      alert('suppression annulée');
-    }
+
+  // const handleClickDelete = async (id, title) => {
+  //   const resultat = window.confirm(`CONFIRMER LA SUPRESSION DE : **${title}**`);
+  //   if (resultat) {
+  //     await requestPrestationsDelete(id);
+  //     const response = await requestPrestations();
+  //     if (response.status === 200) {
+  //       setPrestation(response.data);
+  //     }
+  //   }
+  //   else {
+  //     alert('suppression annulée');
+  //   }
+  // };
+  const handleClickDelete = (id, img, title) => {
+    console.log(id, img);
+    setImgPrestation(img);
+    setSelectedId(id);
+    setDescriptionPrestation(title);
+    setModalDelete(true);
   };
 
   const handleClickModify = (id, img, title, description, prix, index, position) => {
@@ -91,6 +98,7 @@ function Prestations({
 
   const handleClickAbord = () => {
     setModalModify(false);
+    setModalDelete(false);
   };
   const handleSubmitPrestation = async (event) => {
     event.preventDefault();
@@ -119,6 +127,20 @@ function Prestations({
         setPrestation(response2.data);
         setPosition(position);
         setModalModify(false);
+      }
+    }
+    else {
+      navigate('/error');
+    }
+  };
+  const handleSubmitDelete = async () => {
+    console.log(selectedId);
+    const response = await requestPrestationsDelete(selectedId);
+    if (response.status === 200) {
+      const response2 = await requestPrestations();
+      if (response2.status === 200) {
+        setPrestation(response2.data);
+        setModalDelete(false);
       }
     }
     else {
@@ -205,7 +227,7 @@ function Prestations({
                     color="warning"
                     position={item.position}
                     onClick={() => {
-                      handleClickDelete(item.id, item.title);
+                      handleClickDelete(item.id, item.img, item.title);
                     }}
                   >
                     <DeleteForeverIcon />
@@ -325,7 +347,52 @@ function Prestations({
                           </form>
                         </div>
                         )
-                      }
+      }
+      {
+        modalDelete && (
+        <div className="modalModify">
+          <CardMedia
+            key={selectedId}
+            component="img"
+            alt={imgPrestation}
+            height="140"
+            image={imgPrestation}
+          />
+          <CardContent
+            className="form-data__inputTextfield"
+          />
+          <CardActions>
+            <Button
+              key={selectedId}
+              size="small"
+              className="prestations-link"
+              variant="contained"
+              color="warning"
+              onClick={() => {
+                handleSubmitDelete();
+              }}
+            >
+              VALIDER LA SUPPRESSION DE LA PRESTATION ! **** {titlePrestation} ****
+
+            </Button>
+          </CardActions>
+          <CardActions>
+            <Button
+              key={idPrestation}
+              size="small"
+              className="prestations-link"
+              variant="contained"
+              color="secondary"
+              onClick={() => {
+                handleClickAbord();
+              }}
+            >
+              ANNULER
+            </Button>
+          </CardActions>
+        </div>
+        )
+}
     </div>
   );
 }
