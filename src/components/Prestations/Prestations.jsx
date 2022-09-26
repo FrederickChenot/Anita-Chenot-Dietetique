@@ -20,6 +20,7 @@ import {
   requestPrestations, requestPrestationsDelete, requestPrestationsModify, requestPrestationsCreate,
 } from '../../requests/prestations';
 import customTheme from '../../themes/customTheme';
+import Loader from '../Loader/Loader';
 
 function Prestations({
   className,
@@ -30,7 +31,7 @@ function Prestations({
   const [modalModify, setModalModify] = useState(false);
   const [modalCreate, setModalCreate] = useState(false);
   const [modalDelete, setModalDelete] = useState(false);
-  // const [loader, setLoader] = useState(false);
+  const [loader, setLoader] = useState(false);
   const [selectedId, setSelectedId] = useState();
   const [titlePrestation, setTitlePrestation] = useState();
   const [idPrestation, setIdPrestation] = useState();
@@ -40,6 +41,7 @@ function Prestations({
   const [position, setPosition] = useState('');
   const navigate = useNavigate;
   useEffect(async () => {
+    setLoader(true);
     const response = await requestPrestations();
     if (response.status === 200) {
       setPrestation(response.data);
@@ -49,6 +51,7 @@ function Prestations({
       console.log('response front', response);
       navigate('/error');
     }
+    setLoader(false);
   }, []);
   const handleClick = (item) => {
     if (item.Id === 3 || item.Id === 4) {
@@ -60,19 +63,6 @@ function Prestations({
     }
   };
 
-  // const handleClickDelete = async (id, title) => {
-  //   const resultat = window.confirm(`CONFIRMER LA SUPRESSION DE : **${title}**`);
-  //   if (resultat) {
-  //     await requestPrestationsDelete(id);
-  //     const response = await requestPrestations();
-  //     if (response.status === 200) {
-  //       setPrestation(response.data);
-  //     }
-  //   }
-  //   else {
-  //     alert('suppression annulée');
-  //   }
-  // };
   const handleClickDelete = (id, img, title) => {
     console.log(id, img);
     setImgPrestation(img);
@@ -93,7 +83,6 @@ function Prestations({
     setSelectedId(index);
     setModalModify(true);
     setModalCreate(true);
-    // setLoader(true);
   };
 
   const handleClickAbord = () => {
@@ -392,7 +381,10 @@ function Prestations({
           </CardActions>
         </div>
         )
-}
+      }
+      {loader && (
+        <Loader />
+      )}
     </div>
   );
 }

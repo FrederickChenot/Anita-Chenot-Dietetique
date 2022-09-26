@@ -9,6 +9,7 @@ import PriseDeRendezVous from '../PriseDeRendezVous/PriseDeRendezVous';
 import LegalNotice from '../LegalNotice/LegalNotice';
 import About from '../About/About';
 import Avis from '../Avis/Avis';
+import Loader from '../Loader/Loader';
 import UtilsLinks from '../UtilsLinks/UtilsLinks';
 import Connexion from '../Connexion/Connexion';
 // import Carousel from '../Carousel/carousel';
@@ -21,12 +22,12 @@ function App() {
   const [userName, setUserName] = useState('');
   const [isLogged, setIsLogged] = useState(false);
   const [loginErrorMessage, setLoginErrorMessage] = useState('');
+  const [loader, setLoader] = useState(true);
   const navigate = useNavigate();
-
-  // console.log(userId);
 
   const handleLoginSubmit = async (email, password) => {
     setLoginErrorMessage('');
+    setLoader(true);
     const response = await requestLogin(email, password);
     if (response.status === 200) {
       setBearerToken(response.data.accessToken);
@@ -37,8 +38,8 @@ function App() {
     }
     else {
       setLoginErrorMessage(response.data);
-      // console.log(response.data.message);
     }
+    setLoader(false);
   };
 
   const handleLogoutSubmit = () => {
@@ -60,6 +61,7 @@ function App() {
   useEffect(async () => {
     const localToken = getLocalBearerToken();
     if (localToken) {
+      setLoader(true);
       const response = await requestCheck(localToken);
       if (response.status === 200) {
         setUserId(response.data.userId);
@@ -72,6 +74,7 @@ function App() {
         removeBearerToken();
       }
     }
+    setLoader(false);
   }, []);
   return (
     <div className="App">
@@ -80,6 +83,7 @@ function App() {
         onLogoutSubmit={handleLogoutSubmit}
         isUserId={userId}
         userName={userName}
+        loader={loader}
       />
       <Routes>
         <Route path="/error" element={<ErrorPage />} />
@@ -90,6 +94,7 @@ function App() {
           element={(
             <Prestations
               isLogged={isLogged}
+              loader={Loader}
             />
 )}
         />
@@ -110,6 +115,9 @@ function App() {
 )}
         />
       </Routes>
+      {loader && (
+        <Loader />
+      )}
     </div>
   );
 }
