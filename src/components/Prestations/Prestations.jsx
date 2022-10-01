@@ -37,7 +37,7 @@ function Prestations({
   const [idPrestation, setIdPrestation] = useState();
   const [descriptionPrestation, setDescriptionPrestation] = useState();
   const [prixPrestation, setPrixPrestation] = useState();
-  const [imgPrestation, setImgPrestation] = useState('https://res.cloudinary.com/dkrfh1jzy/image/upload/v1653239917/vpinxys8wuhziswnexdf.jpg');
+  const [imgPrestation, setImgPrestation] = useState('https://res.cloudinary.com/dkrfh1jzy/image/upload/v1649410092/arbre_seocli.jpg');
   const [position, setPosition] = useState('');
   const navigate = useNavigate;
   useEffect(async () => {
