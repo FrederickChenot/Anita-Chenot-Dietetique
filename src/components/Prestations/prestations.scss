@@ -30,6 +30,7 @@
 }
 .modalModify{
 	position: fixed;
+	z-index: 2;
 	top: 15px;
 	animation-duration: 0.25s;
 	animation-name: growBox;
