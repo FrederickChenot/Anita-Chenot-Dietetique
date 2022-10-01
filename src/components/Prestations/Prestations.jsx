@@ -72,14 +72,14 @@ function Prestations({
   };
 
   const handleClickModify = (id, img, title, description, prix, index, position) => {
-    console.log(id, img, title, description, prix, index, position);
+    console.log(id, img, title, description, prix, index, 'position:', position);
     setSelectedId(index);
     setModalModify(true);
     setModalCreate(false);
   };
 
   const handleClickCreate = (id, img, title, description, prix, index, position) => {
-    console.log(id, img, title, description, prix, index, position);
+    console.log(id, img, title, description, prix, index, 'position:', position);
     setSelectedId(index);
     setModalModify(true);
     setModalCreate(true);
@@ -106,7 +106,7 @@ function Prestations({
     }
   };
   const handleSubmitPrestationCreate = async (event) => {
-    console.log('submit create');
+    console.log('avant request', 'id', idPrestation, 'img', imgPrestation, 'titre', titlePrestation, 'description', descriptionPrestation, 'prix', prixPrestation, 'position', position);
     event.preventDefault();
     const response = await requestPrestationsCreate(idPrestation, imgPrestation, titlePrestation, descriptionPrestation, prixPrestation, position);
     if (response.status === 200) {
@@ -167,7 +167,6 @@ function Prestations({
       {...rest}
     >
       {prestation.map((item) => (
-
         <Card
           key={item.id}
           sx={{ maxWidth: 345 }}
@@ -244,7 +243,7 @@ function Prestations({
                     color="secondary"
                     position={item.position}
                     onClick={() => {
-                      handleClickCreate(item.id, item.img, item.title, item.description, item.prix, prestation.indexOf(item), item.position);
+                      handleClickCreate(item.id, item.img, item.title, item.description, item.prix, prestation.indexOf(item), position);
                     }}
                   >
                     <AddBoxIcon />
