@@ -3,7 +3,7 @@ import axios from 'axios';
 const apiAxios = axios.create({
   // baseURL: 'https://equilibre-alimentaire.herokuapp.com/',
   // baseURL: ' http://localhost:3000/',
-  baseURL: 'https://render-equilibre-alimentaire.onrender.com',
+  baseURL: 'https://anita-dietetique-back.glitch.me/',
 
 });
 
