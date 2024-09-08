@@ -1,10 +1,7 @@
 import axios from 'axios';
 
 const apiAxios = axios.create({
-  // baseURL: 'https://equilibre-alimentaire.herokuapp.com/',
-  // baseURL: ' http://localhost:3000/',
-  baseURL: 'https://anita-dietetique-back.glitch.me/',
-
+  baseURL: process.env.REACT_APP_BACK_URL,
 });
 
 export default apiAxios;
