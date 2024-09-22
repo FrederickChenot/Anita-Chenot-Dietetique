@@ -16,6 +16,7 @@ import Connexion from '../Connexion/Connexion';
 import AnimationRotate from '../AnimationRotate/AnimationRotate';
 import { requestCheck, requestLogin } from '../../requests/login';
 import { getLocalBearerToken, removeBearerToken, setBearerToken } from '../../requests';
+import { requestPrestations } from '../../requests/prestations';
 
 function App() {
   const [userId, setUserId] = useState('');
@@ -23,6 +24,7 @@ function App() {
   const [isLogged, setIsLogged] = useState(false);
   const [loginErrorMessage, setLoginErrorMessage] = useState('');
   const [loader, setLoader] = useState(true);
+  const [prestations, setPrestations] = useState([]); // État pour les prestations
   const navigate = useNavigate();
 
   const handleLoginSubmit = async (email, password) => {
@@ -58,24 +60,46 @@ function App() {
     }
   };
 
-  useEffect(async () => {
-    const localToken = getLocalBearerToken();
-    if (localToken) {
-      setLoader(true);
-      const response = await requestCheck(localToken);
-      if (response.status === 200) {
-        setUserId(response.data.userId);
-        setUserName(response.data.userName);
-        // console.log('response', response.data);
-        setIsLogged(true);
-        setBearerToken(response.data.accessToken);
+  useEffect(() => {
+    const loadInitialData = async () => {
+      const localToken = getLocalBearerToken();
+
+      // Vérification du token local
+      if (localToken) {
+        setLoader(true);
+        const response = await requestCheck(localToken);
+        if (response.status === 200) {
+          setUserId(response.data.userId);
+          setUserName(response.data.userName);
+          setIsLogged(true);
+          setBearerToken(response.data.accessToken);
+        }
+        else {
+          removeBearerToken();
+        }
       }
-      else {
-        removeBearerToken();
+
+      // Charger les prestations au démarrage de l'application
+      try {
+        const response = await requestPrestations(); // Utilisation de la fonction requestPrestations existante
+        if (response.status === 200) {
+          setPrestations(response.data); // Mettre à jour l'état avec les données reçues
+          console.log(response.data);
+        }
+        else {
+          console.error('Erreur lors du chargement des prestations');
+        }
       }
-    }
-    setLoader(false);
+      catch (error) {
+        console.error('Erreur lors de la requête pour les prestations :', error);
+      }
+
+      setLoader(false); // Désactiver le loader une fois les données chargées
+    };
+
+    loadInitialData();
   }, []);
+
   return (
     <div className="App">
       <Header
@@ -94,7 +118,8 @@ function App() {
           element={(
             <Prestations
               isLogged={isLogged}
-              loader={Loader}
+              // loader={Loader}
+              prestations={prestations}
             />
 )}
         />

@@ -11,6 +11,7 @@ function AnimationRotate({ className, ...rest }) {
       {...rest}
     >
       <figure className="icon-cards mt-3">
+
         <div className="icon-cards__content">
           <div className="icon-cards__item " />
           <div className="icon-cards__item " />

@@ -25,6 +25,7 @@ import Loader from '../Loader/Loader';
 function Prestations({
   className,
   isLogged,
+  prestations,
   ...rest
 }) {
   const [prestation, setPrestation] = useState([]);
@@ -45,7 +46,7 @@ function Prestations({
     const response = await requestPrestations();
     if (response.status === 200) {
       setPrestation(response.data);
-      // console.log('reponse.data dans prestation jsx', response.data);
+      console.log('reponse.data dans prestation jsx', response.data);
     }
     else {
       console.log('response front', response);
@@ -391,6 +392,7 @@ function Prestations({
 Prestations.propTypes = {
   className: PropTypes.string,
   isLogged: PropTypes.bool.isRequired,
+  prestations: PropTypes.array.isRequired,
 };
 Prestations.defaultProps = {
   className: '',
