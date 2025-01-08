@@ -1,0 +1,118 @@
+.main {
+  height: 90vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.main-introduction {
+  font-size: 5em;
+  text-align: center;
+  margin-bottom: 200px;
+  margin-top: 80px;
+  width: 100%;
+  height: 100px;
+  padding: 20px;
+  color: black;
+}
+
+.main-button {
+  display: flex;
+  justify-content: center;
+  margin: 80px 0; /* Espacement du bouton par rapport au bas de la page */
+}
+
+.btn {
+  background-color: #618C7B;
+  color: #FFFFFF;
+  padding: 10px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2em;
+  transition: background-color 0.3s ease;
+
+  /* Animation CSS */
+  position: relative;
+  animation: floatUpDown 2s ease-in-out infinite;
+
+  &:hover {
+    background-color: #124e1d;
+  }
+}
+
+/* Keyframes for the animation */
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translateY(0); /* Position initiale */
+  }
+  50% {
+    transform: translateY(-10px); /* Déplacement vers le haut */
+  }
+}
+
+.main-title-photo {
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.main-photo {
+  display: flex;
+  justify-content: center; /* Centrer les photos horizontalement */
+  position: relative;
+}
+
+.image-container {
+  position: relative;
+  margin: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-container img {
+  width: 100px;
+  height: auto;
+  border-radius: 10%;
+}
+
+/* Applique les transformations pour former un "V" */
+.image-1 {
+  transform: translateY(30px) rotate(-15deg);
+}
+
+.image-2 {
+  transform: translateY(15px) rotate(-7deg);
+}
+
+.image-3 {
+  transform: translateY(0px) rotate(0deg);
+}
+
+.image-4 {
+  transform: translateY(15px) rotate(7deg);
+}
+
+.image-5 {
+  transform: translateY(30px) rotate(15deg);
+}
+
+/* Styles pour les points de navigation */
+.dots-container {
+  display: flex;
+  justify-content: center;
+	margin-bottom: 20px;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  margin: 0 5px;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  transform: scale(1.2); /* Optionnel : pour une légère animation d'agrandissement */
+}
