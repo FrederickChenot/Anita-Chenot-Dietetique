@@ -101,9 +101,9 @@ function UtilsLinks({ className, ...rest }) {
             </ListItem>
             <ListItem className="utilsLinks-item">
 
-              <a href="http://www.avrsante.com/" target="_blank" rel="noreferrer">
+              <a href="https://appui-sante-vosges.fr/" target="_blank" rel="noreferrer">
                 <Chip
-                  label="AVRS"
+                  label="Appui Santé Vosges"
                   clickable
                   sx={{
                     color: '#9C27B0',

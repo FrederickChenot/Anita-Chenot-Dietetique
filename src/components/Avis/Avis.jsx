@@ -20,7 +20,7 @@ const img = [
 
 function Avis({ className, ...rest }) {
   const handleClick = () => {
-    window.open('https://www.pagesjaunes.fr/contribution/avis_reglem_flow/51410609/note_globale?codeRubrique=58400300', '_blank');
+    window.open('https://www.pagesjaunes.fr/contribution/votre-avis-reglemente/51410609?codeRubrique=58400300', '_blank');
   };
   return (
     <div

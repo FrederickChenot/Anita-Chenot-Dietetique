@@ -9,7 +9,7 @@ import PriseDeRendezVous from '../PriseDeRendezVous/PriseDeRendezVous';
 import LegalNotice from '../LegalNotice/LegalNotice';
 import About from '../About/About';
 import Avis from '../Avis/Avis';
-import Loader from '../Loader/Loader';
+// import Loader from '../Loader/Loader';
 import UtilsLinks from '../UtilsLinks/UtilsLinks';
 import Connexion from '../Connexion/Connexion';
 // import Carousel from '../Carousel/carousel';
@@ -23,13 +23,13 @@ function App() {
   const [userName, setUserName] = useState('');
   const [isLogged, setIsLogged] = useState(false);
   const [loginErrorMessage, setLoginErrorMessage] = useState('');
-  const [loader, setLoader] = useState(true);
+  // const [loader, setLoader] = useState(true);
   const [prestations, setPrestations] = useState([]); // État pour les prestations
   const navigate = useNavigate();
 
   const handleLoginSubmit = async (email, password) => {
     setLoginErrorMessage('');
-    setLoader(true);
+    // setLoader(true);
     const response = await requestLogin(email, password);
     if (response.status === 200) {
       setBearerToken(response.data.accessToken);
@@ -41,7 +41,7 @@ function App() {
     else {
       setLoginErrorMessage(response.data);
     }
-    setLoader(false);
+    // setLoader(false);
   };
 
   const handleLogoutSubmit = () => {
@@ -66,7 +66,7 @@ function App() {
 
       // Vérification du token local
       if (localToken) {
-        setLoader(true);
+        // setLoader(true);
         const response = await requestCheck(localToken);
         if (response.status === 200) {
           setUserId(response.data.userId);
@@ -94,7 +94,7 @@ function App() {
         console.error('Erreur lors de la requête pour les prestations :', error);
       }
 
-      setLoader(false); // Désactiver le loader une fois les données chargées
+      // setLoader(false); // Désactiver le loader une fois les données chargées
     };
 
     loadInitialData();
@@ -107,7 +107,7 @@ function App() {
         onLogoutSubmit={handleLogoutSubmit}
         isUserId={userId}
         userName={userName}
-        loader={loader}
+        // loader={loader}
       />
       <Routes>
         <Route path="/error" element={<ErrorPage />} />
@@ -140,9 +140,9 @@ function App() {
 )}
         />
       </Routes>
-      {loader && (
+      {/* {loader && (
         <Loader />
-      )}
+      )} */}
     </div>
   );
 }

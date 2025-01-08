@@ -49,17 +49,15 @@ function LegalNotice({ className, ...rest }) {
             </ListItem>
             <ListItem>
               Conception et réalisation:
-              <a href="http://www.linkedin.com/in/frederick-chenot" target="_blank" rel="noreferrer">
-                <Chip
-                  label="Fred Chenot"
-                  clickable
-                  sx={{
-                    color: '#9C27B0',
-                    fontSize: '1em',
+              <Chip
+                label="FCréation"
+                clickable
+                sx={{
+                  color: '#9C27B0',
+                  fontSize: '1em',
 
-                  }}
-                />
-              </a>
+                }}
+              />
             </ListItem>
             <ListItem>
               Statut entrepreneur indivisuel enregistré sous le n° SIRET : 48445585200026

@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import './prestations.scss';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
@@ -20,7 +20,7 @@ import {
   requestPrestations, requestPrestationsDelete, requestPrestationsModify, requestPrestationsCreate,
 } from '../../requests/prestations';
 import customTheme from '../../themes/customTheme';
-import Loader from '../Loader/Loader';
+// import Loader from '../Loader/Loader';
 
 function Prestations({
   className,
@@ -32,7 +32,7 @@ function Prestations({
   const [modalModify, setModalModify] = useState(false);
   const [modalCreate, setModalCreate] = useState(false);
   const [modalDelete, setModalDelete] = useState(false);
-  const [loader, setLoader] = useState(false);
+  // const [loader, setLoader] = useState(false);
   const [selectedId, setSelectedId] = useState();
   const [titlePrestation, setTitlePrestation] = useState();
   const [idPrestation, setIdPrestation] = useState();
@@ -41,19 +41,19 @@ function Prestations({
   const [imgPrestation, setImgPrestation] = useState('https://res.cloudinary.com/dkrfh1jzy/image/upload/v1649410092/arbre_seocli.jpg');
   const [position, setPosition] = useState('');
   const navigate = useNavigate;
-  useEffect(async () => {
-    setLoader(true);
-    const response = await requestPrestations();
-    if (response.status === 200) {
-      setPrestation(response.data);
-      console.log('reponse.data dans prestation jsx', response.data);
-    }
-    else {
-      console.log('response front', response);
-      navigate('/error');
-    }
-    setLoader(false);
-  }, []);
+  // useEffect(async () => {
+  //   // setLoader(true);
+  //   const response = await requestPrestations();
+  //   if (response.status === 200) {
+  //     setPrestation(response.data);
+  //     console.log('reponse.data dans prestation jsx', response.data);
+  //   }
+  //   else {
+  //     console.log('response front', response);
+  //     navigate('/error');
+  //   }
+  //   // setLoader(false);
+  // }, []);
   const handleClick = (item) => {
     if (item.Id === 3 || item.Id === 4) {
       console.log('hello');
@@ -167,7 +167,7 @@ function Prestations({
       className={classnames('prestations', className)}
       {...rest}
     >
-      {prestation.map((item) => (
+      {prestations.map((item) => (
         <Card
           key={item.id}
           sx={{ maxWidth: 345 }}
@@ -382,9 +382,9 @@ function Prestations({
         </div>
         )
       }
-      {loader && (
+      {/* {loader && (
         <Loader />
-      )}
+      )} */}
     </div>
   );
 }
